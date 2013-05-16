@@ -22,7 +22,11 @@ LOCAL_MODULE := fw_bcm4329.bin
 LOCAL_MODULE_CLASS := ETC
 #LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/firmware
 LOCAL_MODULE_PATH := $(TARGET_OUT)/vendor/firmware
+ifeq ($(strip $(WIFI_BAND)),802_11_ABG)
+LOCAL_SRC_FILES := fw_bcm4329_abg.bin
+else
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
+endif
 include $(BUILD_PREBUILT)
 
 ########################
